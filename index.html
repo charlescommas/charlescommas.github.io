@@ -1,1 +1,109 @@
-"Hellow world!" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+</head>
+<style>
+    body{
+        background-color: #f8f8f8;
+        user-select: none;
+    }
+    .top-container{
+        position: absolute;
+        top: 5%;
+        width: 90vw;
+        transform: translateX(5%);
+        text-align: center;
+        margin: 0 auto;
+        background-color: #f8f8f8;
+        color: #f8f8f8;
+    }
+    .top-container:hover{
+        background-color: #e0e0e0;
+    }
+    .middle-container{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .ans{
+        display: flex;
+        justify-content: space-between;
+    }
+    .ans-inner{
+        color: #f8f8f8;
+        background-color:#f8f8f8;
+        padding: 0 15px;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+    .ans-inner:hover{
+        color: #f8f8f8;
+        background-color:#e0e0e0;
+    }
+    @media screen and (max-width: 768px){
+        .ans-inner{
+            background-color: #f0f0f0;
+            margin-left: 10px;
+        }
+    }
+</style>
+<body>
+    <div class="top-container">
+        <p>Answer the question, please</p>
+    </div>
+    <div class="middle-container">
+        <p>Are you lost?</p>
+        <div class="ans">
+            <div id="y" class="ans-inner">
+                <p>Yes</p>
+            </div>
+            <div id="n" class="ans-inner">
+                <p id="n">No</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        if(sessionStorage.getItem("flag") !== null){
+            window.location.href = 'real-index.html';
+        }
+        //y
+        document.getElementById('y').addEventListener('click', function () {
+            window.location = 'https://www.google.com/search?q=how+to+avoid+being+lost+in+internet';
+        });
+        //n
+        document.getElementById('n').addEventListener('click', function () {
+            sessionStorage.setItem("flag", "true");
+            window.location.href = 'real-index.html';
+        });
+        //disable context menu (right click)
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+        //disable any inspect element keys
+        document.onkeydown = function (e) {
+            //f12, ctrl+I, ctrl+shift+c, ctrl+shift+j, ctrl+u
+            if ((event.keyCode == 123) || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
+                alert('You are on your own, mate.');
+                return false;
+            }
+        }
+    });
+</script>
+<noscript>
+    <style type="text/css">
+        body {
+            display: none;
+        }
+    </style>
+    <div class="noscript">
+        Javascript disabled? Where's the fun in that?
+    </div>
+</noscript>
+</html>

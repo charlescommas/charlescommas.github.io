@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes Converter</title>
+</head>
+<body>
+    <textarea id="input">John Doe
+"Hello World"
+
+Jane Doe
+"What's up?"</textarea>
+    <input type="button" value="Convert!" id="btn">
+
+    <textarea id="output"></textarea>
+
+    <div style="background-color: #ddd; height: 100vh; width: 100vw;">
+        <img src="draw.png" style="width: auto;">
+    </div>
+</body>
+<script>
+    document.getElementById('btn').addEventListener('click', function(){
+        //get the value of input
+        let val = document.getElementById('input').value;
+        //remove all the enter char
+        val = val.replaceAll('\n', '');
+        //split the quote and the quotee using symbol "
+        let split = val.split('"');
+        var author = [];
+        var quote = [];
+        for(i=0; i<split.length; i++){
+            if(i%2 === 0) //even
+            {
+                console.log('even');
+                author[(i/2)] = split[i];
+            }
+            else if(i%2 !== 0)//odd
+            {
+                console.log('odd');
+                quote[((i-1)/2)] = split[i];
+            }
+        }
+        author.pop();
+        console.log(quote);
+        console.log(author);
+
+        var div = '';
+        var num = 1;
+        for(i=0; i<quote.length; i++){
+            div += `
+                {
+                    number: ` + num++ + `,
+                    text: "` + quote[i] + `",
+                    quotee: "` + author[i] + `",
+                },
+            `;
+        }
+
+        output = document.getElementById('output');
+        output.innerHTML = div;
+    })
+</script>
+</html>

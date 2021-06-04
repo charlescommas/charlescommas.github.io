@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes | Ordinary Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f32002f037.js" crossorigin="anonymous"></script>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body style="background-color: #000">
+
+    <!-- Nav -->
+    <div>
+        <div class="nav" id="navbar">
+            <div class="nav-logo">
+                <a href="real-index.html">
+                    <img src="assets/logo_4.png">
+                </a>
+            </div>
+            <ul>
+                <a href="real-index.html">
+                    <li>HOME</li>
+                </a>
+                <a href="quotes.html">
+                    <li>QUOTES</li>
+                </a>
+                <a href="about.html">
+                    <li class="box">ABOUT</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <section class="section-content">
+
+        <div class="content-header" style="background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.75) ), url('assets/quote.png');">
+            <div class="inner-content-header">
+                <h1 id="headerText">A QUOTEFUL PAGE</h1>
+                <p>Quotes won't work, unless you do</p>
+            </div>
+        </div>
+
+        <div class="content-quote-filter">
+            <div class="content-quote-filter-inner">
+                <p>Filter through words of wisdom</p>
+                <input type="text" id="idQuoteFilter" onkeyup="filterQuote()" placeholder="Enter a keyword...">
+            </div>
+        </div>
+
+        <div class="content-quote-wrapper" id="quoteWrapper"></div>
+        
+    </section>
+
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <div class="footer-logo">
+            <img src="assets/logo_4.png">
+            <small >© 2021 Charles Commas</small>
+        </div>
+        <div class="footer-contact">
+            <div class="footer-contact-inner">
+                <div class="footer-contact-title">
+                    <p>CONTACT ME</p>
+                </div>
+                <div class="footer-contact-content">
+                    <div style="display: inline-block">
+                        <a href="mailto:ch4rlescommas@gmail.com"><i class="fa fa-envelope-o"></i>&emsp;<small>ch4rles.commas@gmail.com</small></a>
+                    </div>
+                    <div style="display: inline-block">
+                        <a style="text-decoration: none; color: #fff; margin-top: 5px;" href="https://www.instagram.com/jack_roe_"><i class="fab fa-instagram"></i>&emsp;<small>jack_roe_</small></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="quotes.js"></script>
+<script>
+    //onready
+    document.addEventListener('DOMContentLoaded', function(){
+
+        generateQuotes();
+
+        //dark sticky navbar on scroll
+        var navbar = document.getElementById('navbar');
+        var navbarTop = navbar.offsetTop;
+        document.addEventListener('scroll', function(){
+            if(window.pageYOffset > navbarTop){
+                navbar.classList.add('nav-dark');
+            }else if(window.pageYOffset === 0){
+                navbar.classList.remove('nav-dark');
+            }
+        });
+
+        //var quoteWrapper = document.getElementById('quoteTextWrapper');
+        //var quoteTop = quoteWrapper.offsetTop;
+        document.addEventListener('scroll', function(){
+            document.querySelectorAll('.quote-text-wrapper').forEach(item => {
+                //when each quote's topline is about 30% onscreen, display the quote
+                if(item.offsetTop < (window.pageYOffset + (window.innerHeight * 0.70))){
+                    item.parentElement.classList.remove('quote-hidden');
+                }else{
+                    item.parentElement.classList.add('quote-hidden');
+                }
+            });
+        });
+
+    });
+
+    function generateQuotes(){
+        // variable as container for quotes
+        let div = '';
+        for(i=0; i<quotes.length; i++){
+            div +=
+            `
+            <div class="content-quote quote-hidden">
+            <div class="quote-text-wrapper" style="height: auto; padding-top: 30px; width: 100%; background-color: #000; display: flex; align-items: center; justify-content: center;">
+            <div class="quote-text" style="height: auto; width: 90%; padding: 2em; background-image: linear-gradient(to right, #000, #222); border-radius: 0 20px 20px 0; color: #888; text-align: center; border: none;">
+            <blockquote>` + quotes[i].text +
+            `</blockquote>
+            <span style="margin-left: 40%">
+            ` + quotes[i].quotee + `</span>
+            </div>
+            </div>
+            </div>
+            `
+        }
+        document.getElementById('quoteWrapper').innerHTML = div;
+    }
+
+    function filterQuote(){
+        let filteredData = '';
+        //grab the filter value
+        var search = document.getElementById('idQuoteFilter').value;
+        //make the value capitalized (because it's case sensitive)
+        var searchCapitalized = search.replace(/\b\w/g, l => l.toUpperCase());
+        //make the value uncapitalized (because it's case sensitive)
+        var searchUncapitalized = search.replace(/\b\w/g, l => l.toLowerCase());
+        //grab the matching datas
+        if(search !== ''){
+            filteredData = quotes.filter(function(quote){
+                let res = quote.text.includes(searchUncapitalized) || quote.text.includes(searchCapitalized) || quote.quotee.includes(searchUncapitalized) || quote.quotee.includes(searchCapitalized);// || quote[2].includes(search) || quote[3].includes(search);
+                return res;
+            });
+        }else{
+            filteredData = quotes;
+        }
+        
+        // if filter is empty
+        if(filteredData.length === 0){
+            let div = '';
+            div +=
+            `
+            <div style="width: 100%; height: 30vh; margin-top: 10vh; text-align: center; color: #fff;">
+                <span style="font-family: 'Dancing Script', cursive; font-size: 1.2em; color: #fff;">Sorry, we have no wisdom about '`
+                + searchCapitalized +
+                `' yet.</span>
+            </div>
+            `
+            document.getElementById('quoteWrapper').innerHTML = div;
+        }else{ // if filter is working
+            let div = '';
+            filteredData.forEach(quote => {  
+                div +=
+                `
+                <div class="content-quote quote-hidden">
+                <div class="quote-text-wrapper" style="height: auto; padding-top: 30px; width: 100%; background-color: #000; display: flex; align-items: center; justify-content: center;">
+                <div class="quote-text" style="height: auto; width: 90%; padding: 2em; background-image: linear-gradient(to right, #000, #222); border-radius: 0 20px 20px 0; color: #888; text-align: center">
+                <blockquote>` + quote.text +
+                `</blockquote>
+                <span style="margin-left: 40%">
+                ` + quote.quotee + `</span>
+                </div>
+                </div>
+                </div>
+                `;
+                document.getElementById('quoteWrapper').innerHTML = div;
+            });
+        }
+
+        //scroll to filter input box
+        let filterBox = document.getElementById('idQuoteFilter');
+        filterBox.scrollIntoView(false);
+    }
+</script
+</html>

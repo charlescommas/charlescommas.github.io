@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordinary Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f32002f037.js" crossorigin="anonymous"></script>
+
+    <style>
+        .content-blog-inner{
+            width: 90%; 
+            height: 80vh; 
+            display: flex; 
+            justify-content: space-around; 
+            align-items: center;
+            flex-direction: row;
+        }
+        .content-blog-inner-left{
+            width: 60%; 
+            height: 100%;
+            display: flex; 
+            flex-direction: column;
+            justify-content: space-around; 
+            padding: 3em;
+            
+        }
+        .content-blog-inner-left-top, .content-blog-inner-left-bottom{
+            color: #fff;
+        }
+        .content-blog-inner-left-top{
+            width: 60%;
+            padding: 1em;
+            align-self: flex-start;
+            text-align: left;
+        }
+        .content-blog-inner-left-bottom{
+            width: 80%;
+            align-self: flex-end;
+            text-align: right;
+        }
+        
+        .content-blog-inner-right{
+            width: 40%; 
+            height: 80%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #aaa;
+        }
+
+        .content-blog-inner-right-line{
+            position: absolute; 
+            border: 1px solid #fff; 
+            width: 30%; 
+            height: 75%;
+        }
+
+        .content-blog-inner-right img{
+            max-width: 100%; 
+            max-height: 100%; 
+            align-self: center;
+        }
+
+        @media only screen and (max-width: 768px){
+            .content-blog-inner{
+                flex-direction: column;
+                height: auto;
+            }
+            .content-blog-inner-left{
+                width: 100%; 
+            }
+            .content-blog-inner-left p{
+                font-size: 4vw !important;
+            }
+            .content-blog-inner-right{
+                width: 70%; 
+                height: 100%; 
+                display: flex; 
+                justify-content: center; 
+                align-items: center; 
+                padding: 0;
+            }
+            .content-blog-inner-right-line{
+                width: 40vw;
+                height: 70vw;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #000">
+
+    <!-- Cookies -->
+    <div class="section-cookies" id="sectionCookies">
+        <div class="section-cookies-inner">
+            <span>I don't really get what web cookies are for, so I don't think I will use it here.</span>
+            <span class="button" id="exitCookies">Got It</span>
+        </div>
+    </div>
+
+    <!-- Nav -->
+    <div>
+        <div class="nav" id="navbar">
+            <div class="nav-logo">
+                <a href="real-index.html">
+                    <img src="assets/logo_4.png">
+                </a>
+            </div>
+            <!-- Not sure why ul's children are a, instead of li -->
+            <ul>
+                <a href="real-index.html">
+                    <li>HOME</li>
+                </a>
+                <a href="quotes.html">
+                    <li>QUOTES</li>
+                </a>
+                <a href="about.html">
+                    <li class="box">ABOUT</li>
+                </a>
+            </ul>
+            <!-- But it works, somehow... -->
+        </div>
+    </div>
+
+    <!-- Content -->
+    <section class="section-content">
+
+        <div class="content-header">
+            <div class="inner-content-header">
+                <h1 id="headerText">YOU ARE LOOKING AT MY TAGLINE</h1>
+                <p>Yeah, my tagline really says that.</p>
+            </div>
+        </div>
+
+        <div class="content-blog" style="background-color: #111;">
+            <div style="display: flex; justify-content: center; align-items: center; padding: 30px;">
+                <div class="content-blog-inner">
+                    <div class="content-blog-inner-left">
+                        <div class="content-blog-inner-left-top" style="border: 1px solid #fff;">
+                            <p>Hello, budum!</p>
+                        </div>
+                        <div class="content-blog-inner-left-bottom">
+                            <p>Welcome to my website.</p>
+                            <p>At one point in my life, I thought it would be really cool to have my own website.</p>
+                            <p>Now that I have one, I don't know what to put in here.</p>
+                            <p>Also, I'm not good with styles and creativity (obviously), so I just throw everything in here.</p>
+                            <p>I currently use this website to practice flex display and native js.</p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="content-blog-inner-right">
+                        <div class="content-blog-inner-right-line"></div>
+                        <div style="padding: 0; height: 100%;">
+                            <div style="height: 100%; max-width: 100%; display: flex;">
+                                <img id="idImage" src="assets/draw.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-quote quote-hidden">
+            <div class="quote-text-wrapper" style="height: 100vh; width: 100%; background-color: #000; display: flex; align-items: center; justify-content: center;">
+                <a href="quotes.html" style="width: 100%; text-decoration: none;">
+                <div class="quote-text" style="position: relative; width: 150px; bottom: 30px; right: -200px; transition: all 1.1s ease-in-out;">
+                </div>
+                <div class="quote-text" style="font-family: 'Open Sans';">
+                    <blockquote>Click me to get inspired by words of wisdom.</blockquote>
+                    <span style="margin-left: 40%">An Inspiring Person</span>
+                    <div style="position: absolute; border: 1px solid #fff; border-radius: 20px; padding: 2em; background-color: #000; width: 150px;"></div>
+                </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <div class="footer-logo">
+            <img src="assets/logo_4.png">
+            <small >© 2021 Charles Commas</small>
+        </div>
+        <div class="footer-contact">
+            <div class="footer-contact-inner">
+                <div class="footer-contact-title">
+                    <p>CONTACT ME</p>
+                </div>
+                <div class="footer-contact-content">
+                    <div style="display: inline-block">
+                        <a href="mailto:ch4rlescommas@gmail.com"><i class="fa fa-envelope-o"></i>&emsp;<small>ch4rles.commas@gmail.com</small></a>
+                    </div>
+                    <div style="display: inline-block">
+                        <a style="text-decoration: none; color: #fff; margin-top: 5px;" href="https://www.instagram.com/jack_roe_"><i class="fab fa-instagram"></i>&emsp;<small>jack_roe_</small></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //onready
+    document.addEventListener('DOMContentLoaded', function(){
+
+        //dark sticky navbar on scroll
+        var navbar = document.getElementById('navbar');
+        var navbarTop = navbar.offsetTop;
+        document.addEventListener('scroll', function(){
+            if(window.pageYOffset > navbarTop){
+                navbar.classList.add('nav-dark');
+            }else if(window.pageYOffset === 0){
+                navbar.classList.remove('nav-dark');
+            }
+        });
+
+        //show cookies warning
+        setTimeout(function(){
+            let cookies = document.getElementById('sectionCookies');
+            cookies.style.opacity = 1;
+            cookies.style.visibility = 'visible';
+        }, 3000);
+        
+        //close cookies warning
+        document.getElementById('exitCookies').addEventListener('click', function(){
+            let cookies = document.getElementById('sectionCookies');
+            cookies.style.opacity = 0;
+            cookies.style.visibility = 'hidden';
+        });
+
+        // // styling header text to skew on hover
+        // var headerText = document.getElementById('headerText').innerHTML;
+        // console.log(headerText);
+        // var headerArr = headerText.split(" ");
+        // document.getElementById('headerText').innerHTML = '';
+        // for(i=0; i<headerArr.length; i++){
+        //     headerArr[i] = '<span>'+ headerArr[i] +'</span> ';
+        //     console.log(headerArr);
+        //     document.getElementById('headerText').innerHTML += headerArr[i];
+        // }
+
+        document.addEventListener('scroll', function(){
+            document.querySelectorAll('.quote-text-wrapper').forEach(item => {
+                //when each quote's topline is about 75% onscreen, display the quote
+                if(item.offsetTop < (window.pageYOffset + (window.innerHeight * 0.25))){
+                    item.parentElement.classList.remove('quote-hidden');
+                }else{
+                    item.parentElement.classList.add('quote-hidden');
+                }
+            });
+        });
+
+    });
+</script>
+</html>
