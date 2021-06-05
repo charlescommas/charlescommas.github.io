@@ -209,6 +209,7 @@ body{
     align-items: center;
     color: #fff;
     background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.75) ), url('assets/home_desktop.png');
+    background-size: cover;
 }
 
 .inner-content-header{
@@ -324,15 +325,15 @@ body{
     font-size: 1em;
 }
 /* quote text */
-.quote-text blockquote{
-    font-size: 1.5em;
+.quote-text blockquote p{
+    font-size: 0.8em;
 }
 /* quotation mark */
 .quote-text blockquote::before, .quote-text blockquote::after{
     position: relative;
     font-size: 2em;
     color: #888;
-    line-height: 1.5em;
+    line-height: 1.2em;
     top: 3px;
 }
 .quote-text blockquote::before{
