@@ -7,43 +7,45 @@
 </head>
 <style>
     body{
-        background-color: #f8f8f8;
+        background-color: #fff;
         user-select: none;
     }
-    .top-container{
+    .error-top{
         position: absolute;
         top: 5%;
         width: 90vw;
         transform: translateX(5%);
         text-align: center;
         margin: 0 auto;
+        background-color: #fff;
+        color: #fff;
+    }
+    .error-top:hover{
         background-color: #f8f8f8;
-        color: #f8f8f8;
     }
-    .top-container:hover{
-        background-color: #e0e0e0;
-    }
-    .middle-container{
+    .error-mid{
         position: absolute;
         left: 50%;
         top: 50%;
+        width: 50%;
         transform: translate(-50%, -50%);
-        text-align: center;
+        text-align: left;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
     }
-    .ans{
-        display: flex;
-        justify-content: space-between;
+    .error-mid .error-title{
+        font-weight: 500; 
+        font-size: 1.5em;
     }
-    .ans-inner{
-        color: #f8f8f8;
-        background-color:#f8f8f8;
-        padding: 0 15px;
+    .error-mid .error-content{
+        font-size: 0.95em;
+    }
+    .button{
+        background-color: #1967d2; 
+        color: #fff; 
+        border-radius: 5px; 
+        padding: 8px 20px; 
+        border: none; 
         cursor: pointer;
-        transition: all 0.5s;
-    }
-    .ans-inner:hover{
-        color: #f8f8f8;
-        background-color:#e0e0e0;
     }
     @media screen and (max-width: 768px){
         .ans-inner{
@@ -53,18 +55,28 @@
     }
 </style>
 <body>
-    <div class="top-container">
-        <p>Answer the question, please</p>
+    <div class="error-top">
+        <p>If you are sure that you are in the right place, you can hit that "I'm not lost!" button.</p>
     </div>
-    <div class="middle-container">
-        <p>Are you lost?</p>
-        <div class="ans">
-            <div id="y" class="ans-inner">
-                <p>Yes</p>
-            </div>
-            <div id="n" class="ans-inner">
-                <p id="n">No</p>
-            </div>
+    <div class="error-mid">
+        <div>
+            <img src="assets/notfound.png">
+        </div>
+        <div class="error-title">
+            <p>This site can't be reached</p>
+        </div>
+        <div class="error-content">
+            <p>Check if there is a typo in URL.</p>
+            <p>If spelling is correct, <a href="javascript:iAmLost()" id="y">try running I Am Lost Protocol</a>.</p>
+            <p style="font-size: 0.8em;">DNS_PROBE_WHERE_AM_I</p>
+        </div>
+        <div style="margin-top: 3em;">
+            <button class="button" id="r" style="margin-right: 1em;">
+                Reload
+            </button>
+            <button class="button" id="n">
+                I'm not lost!
+            </button>
         </div>
     </div>
 </body>
@@ -82,6 +94,10 @@
             sessionStorage.setItem("flag", "true");
             window.location.href = 'real-index.html';
         });
+        //r(eload)
+        document.getElementById('r').addEventListener('click', function () {
+            window.location.reload();
+        })
         //disable context menu (right click)
         document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
@@ -92,6 +108,8 @@
             if ((event.keyCode == 123) || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
                 alert('You are on your own, mate.');
                 return false;
+            }else if(event.keyCode == 70){
+                alert('Did you just press F? For real? What do you want? Respect??');
             }
         }
     });
