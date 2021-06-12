@@ -39,18 +39,53 @@
     .error-mid .error-content{
         font-size: 0.95em;
     }
-    .button{
-        background-color: #1967d2; 
-        color: #fff; 
+    .error-mid .button{
         border-radius: 5px; 
         padding: 8px 20px; 
         border: none; 
         cursor: pointer;
+        margin-right: 1em;
+    }
+    .error-mid .blue-button{
+        background-color: #1967d2; 
+        color: #fff; 
+    }
+    .error-mid .blue-button:hover{
+        background-color: #1559b7;
+    }
+    .error-mid .hidden-button{
+        background-color: #eee;
+        color: #fff;
+        float: right;
+        opacity: 0;
+        transition: all 1s ease-in-out;
+    }
+    .error-mid .hidden-button:hover{
+        opacity: 1;
+    }
+    @keyframes jump {
+        0% {}
+        15% {transform: scale(1, 0.75) translateY(20px);} /* prepare to jump */
+        20% {transform: translateY(-20px);} /* jumping */
+        30% {transform: translateY(-25px);}
+        40% {transform: translateY(-20px);}
+        45% {transform: scale(1, 0.75) translateY(20px);} /* landing */
+        60% {transform: scale(1, 1);}
+        100% {}
+    }
+    #logo:hover{
+        animation-name: jump;
+        animation-duration: 2s;
+        animation-iteration-count: infinite; 
+        animation-timing-function: ease-in-out;
     }
     @media screen and (max-width: 768px){
         .ans-inner{
             background-color: #f0f0f0;
             margin-left: 10px;
+        }
+        .error-mid{
+            width: 80%;
         }
     }
 </style>
@@ -60,7 +95,7 @@
     </div>
     <div class="error-mid">
         <div>
-            <img src="assets/notfound.png">
+            <img id="logo" src="assets/notfound.png">
         </div>
         <div class="error-title">
             <p>This site can't be reached</p>
@@ -71,16 +106,30 @@
             <p style="font-size: 0.8em;">DNS_PROBE_WHERE_AM_I</p>
         </div>
         <div style="margin-top: 3em;">
-            <button class="button" id="r" style="margin-right: 1em;">
+            <button class="button blue-button" id="r">
                 Reload
             </button>
-            <button class="button" id="n">
+            <button class="button blue-button" id="n">
                 I'm not lost!
+            </button>
+            <button class="button hidden-button" id="gate">
+                Enter the gate
             </button>
         </div>
     </div>
 </body>
 <script>
+    String.prototype.hashCode = function() {
+        var hash = 0;
+        if (this.length == 0) return hash;
+        for (var i = 0; i < this.length; i++) {
+            var char = this.charCodeAt(i);
+            hash = ((hash<<5)-hash)+char;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return hash;
+    }
+
     document.addEventListener('DOMContentLoaded', function(){
         if(sessionStorage.getItem("flag") !== null){
             window.location.href = 'real-index.html';
@@ -112,6 +161,21 @@
                 alert('Did you just press F? For real? What do you want? Respect??');
             }
         }
+        //changing the logo on mouse over
+        document.getElementById('logo').addEventListener('mouseover', function(){
+            this.src="assets/notfound_smile.png";
+        });
+        //reveal the hidden gate of Moria
+        document.getElementById('gate').addEventListener('click', function(){
+            var ans = prompt('Speak (type), friend, and enter.');
+            if(ans != null){
+                var hash = ans.hashCode();
+                if(hash == -1077789449 || hash == -1993922281){
+                    alert('Welcome to the Kingdom of Moria');
+					window.location.href = 'hidden-index.html';
+                }
+            }
+        });
     });
 </script>
 <noscript>
