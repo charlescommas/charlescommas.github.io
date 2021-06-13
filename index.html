@@ -50,6 +50,14 @@
         background-color: #1967d2; 
         color: #fff; 
     }
+    .error-mid .grey-button{
+        background-color: #ececed;
+        border: 1px solid #dbdbdb;
+        color: #000;
+    }
+    .error-mid .grey-button:hover{
+        background-color: #dbdbdb;
+    }
     .error-mid .blue-button:hover{
         background-color: #1559b7;
     }
@@ -101,15 +109,15 @@
             <p>This site can't be reached</p>
         </div>
         <div class="error-content">
-            <p>Check if there is a typo in URL.</p>
-            <p>If spelling is correct, <a href="javascript:iAmLost()" id="y">try running I Am Lost Protocol</a>.</p>
-            <p style="font-size: 0.8em;">DNS_PROBE_WHERE_AM_I</p>
+            <p>Check if there is a typo in URL</p>
+            <p>If spelling is correct, <a href="javascript:iAmLost()" id="y">try running I Am Lost Protocol</a></p>
+            <p style="font-size: 0.8em;">HTTP_ERROR_WHERE_AM_I</p>
         </div>
         <div style="margin-top: 3em;">
             <button class="button blue-button" id="r">
                 Reload
             </button>
-            <button class="button blue-button" id="n">
+            <button class="button grey-button" id="n">
                 I'm not lost!
             </button>
             <button class="button hidden-button" id="gate">
