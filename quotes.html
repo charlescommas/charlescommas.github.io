@@ -14,14 +14,14 @@
         }
     </style>
 </head>
-<body style="background-color: #000">
+<body style="background-color: #e6ffe6">
 
     <!-- Nav -->
     <div>
         <div class="nav" id="navbar">
             <div class="nav-logo">
                 <a href="real-index.html">
-                    <img src="assets/logo_4.png">
+                    <img src="assets/logo-fill.png">
                 </a>
             </div>
             <ul>
@@ -41,8 +41,9 @@
     <!-- Content -->
     <section class="section-content">
 
-        <div class="content-header" style="background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.75) ), url('assets/quote.png');">
-            <div class="inner-content-header">
+        <div class="content-header" style="background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(1, 1, 1, 0) ), url('assets/leaves.jpg'); background-position: center;">
+            <!-- Credit to www.rawpixel.com for providing this really chill background image -->
+            <div class="inner-content-header" style="border: 1px solid #fff; padding: 2em;">
                 <h1 id="headerText">A QUOTEFUL PAGE</h1>
                 <p>Quotes won't work, unless you do</p>
             </div>
@@ -94,9 +95,9 @@
         var navbarTop = navbar.offsetTop;
         document.addEventListener('scroll', function(){
             if(window.pageYOffset > navbarTop){
-                navbar.classList.add('nav-dark');
+                navbar.classList.add('nav-light');
             }else if(window.pageYOffset === 0){
-                navbar.classList.remove('nav-dark');
+                navbar.classList.remove('nav-light');
             }
         });
 
@@ -122,8 +123,8 @@
             div +=
             `
             <div class="content-quote quote-hidden">
-            <div class="quote-text-wrapper" style="height: auto; padding-top: 30px; width: 100%; background-color: #000; display: flex; align-items: center; justify-content: center;">
-            <div class="quote-text" style="height: auto; width: 90%; padding: 2em; background-image: linear-gradient(to right, #000, #222); border-radius: 0 20px 20px 0; color: #888; text-align: center; border: none;">
+            <div class="quote-text-wrapper" style="height: auto; padding-top: 30px; width: 100%; background-color: inherit; display: flex; align-items: center; justify-content: center;">
+            <div class="quote-text" style="height: auto; width: 90%; padding: 2em; background: linear-gradient(338.83deg,#fcc9a5 -3.41%,rgba(255,196,255,0) 52.31%),#ffeec4; border-radius: 20px; color: #888; text-align: center; border: none;">
             <blockquote>` + quotes[i].text +
             `</blockquote>
             <span style="margin-left: 40%">
@@ -172,8 +173,8 @@
                 div +=
                 `
                 <div class="content-quote quote-hidden">
-                <div class="quote-text-wrapper" style="height: auto; padding-top: 30px; width: 100%; background-color: #000; display: flex; align-items: center; justify-content: center;">
-                <div class="quote-text" style="height: auto; width: 90%; padding: 2em; background-image: linear-gradient(to right, #000, #222); border-radius: 0 20px 20px 0; color: #888; text-align: center; border: none;">
+                    <div class="quote-text-wrapper" style="height: auto; padding-top: 30px; width: 100%; background-color: inherit; display: flex; align-items: center; justify-content: center;">
+            <div class="quote-text" style="height: auto; width: 90%; padding: 2em; background: linear-gradient(338.83deg,#fcc9a5 -3.41%,rgba(255,196,255,0) 52.31%),#ffeec4; border-radius: 20px; color: #888; text-align: center; border: none;">
                 <blockquote>` + quote.text +
                 `</blockquote>
                 <span style="margin-left: 40%">

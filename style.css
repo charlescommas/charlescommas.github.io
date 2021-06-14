@@ -87,6 +87,20 @@ body{
     box-shadow: 0 3px 20px 0 rgba(0,0,0,1);
 }
 
+.nav-light{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fed4cb;
+    padding: 15px 50px;
+    box-shadow: 0 3px 20px 0 rgba(0,0,0,1);
+    color: #888 !important;
+}
+
+.nav-light .box{
+    border: 1px solid #888;
+}
+
 @keyframes spin{
     25% {transform: rotate(90deg)}
     50% {transform: rotate(180deg)}
@@ -262,6 +276,10 @@ body{
         background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.75) ), url('assets/home_mobile.png');
     }
 
+    .content-header h1{
+        font-size: 3em;
+    }
+
     .section-about .content-header{
         justify-content: center;
     }
@@ -289,7 +307,7 @@ body{
     height: auto; 
     padding-top: 30px; 
     width: 100%; 
-    background-color: #000; 
+    background-color: inherit; 
     display: flex; 
     align-items: center; 
     justify-content: center;
@@ -319,6 +337,8 @@ body{
 
 .quote-text blockquote, .quote-text span{
     transition: all 0.8s ease;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4em;
 }
  /* quotee */
 .quote-text span{
@@ -331,7 +351,8 @@ body{
 /* quotation mark */
 .quote-text blockquote::before, .quote-text blockquote::after{
     position: relative;
-    font-size: 2em;
+    font-size: 1.4em;
+    font-family: 'Dancing Script', cursive;
     color: #888;
     line-height: 1.2em;
     top: 3px;
@@ -356,7 +377,7 @@ body{
     width: 100%; 
     margin-top: 20vh; 
     padding: 30px; 
-    background-color: #000; 
+    background-color: inherit; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -376,7 +397,7 @@ body{
 .content-quote-filter p{
     font-family: 'Dancing Script', cursive; 
     font-size: 1.2em; 
-    color: #fff;
+    color: #888;
 }
 
 .content-quote-filter input{
