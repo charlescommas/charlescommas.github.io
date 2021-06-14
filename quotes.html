@@ -29,10 +29,10 @@
                     <li>HOME</li>
                 </a>
                 <a href="quotes.html">
-                    <li>QUOTES</li>
+                    <li class="box">QUOTES</li>
                 </a>
                 <a href="about.html">
-                    <li class="box">ABOUT</li>
+                    <li>ABOUT</li>
                 </a>
             </ul>
         </div>
@@ -58,7 +58,7 @@
 
         <div class="content-quote-wrapper" id="quoteWrapper"></div>
         
-    </section>
+    </section>    
 
     <!-- Footer -->
     <div class="footer" id="footer">
@@ -89,6 +89,9 @@
     document.addEventListener('DOMContentLoaded', function(){
 
         generateQuotes();
+        // var music = document.getElementById('music');
+        // music.load();
+        // music.play();
 
         //dark sticky navbar on scroll
         var navbar = document.getElementById('navbar');
