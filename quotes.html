@@ -21,7 +21,7 @@
         <div class="nav" id="navbar">
             <div class="nav-logo">
                 <a href="real-index.html">
-                    <img src="assets/logo-fill.png">
+                    <img src="assets/logo_white_thick.png">
                 </a>
             </div>
             <ul>
@@ -82,6 +82,17 @@
             </div>
         </div>
     </div>
+
+    <!-- Pop-Up Modal -->
+    <div class="quote-modal-wrapper" id="copyModal">
+        <div class="quote-modal-box">
+            <div style="text-align: center;">
+                <h2>Tips #468</h2>
+                <p style="background-color: #fff; padding: 1em; border-radius: 10px;">You can copy a quote by clicking it!</p>
+            </div>
+            <button id="exitModal">OK</button>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="quotes.js"></script>
 <script>
@@ -104,8 +115,7 @@
             }
         });
 
-        //var quoteWrapper = document.getElementById('quoteTextWrapper');
-        //var quoteTop = quoteWrapper.offsetTop;
+        //display each quotes when on screen
         document.addEventListener('scroll', function(){
             document.querySelectorAll('.quote-text-wrapper').forEach(item => {
                 //when each quote's topline is about 30% onscreen, display the quote
@@ -114,6 +124,43 @@
                 }else{
                     item.parentElement.classList.add('quote-hidden');
                 }
+            });
+        });
+
+        //show copy modal
+        setTimeout(function(){
+            let modal = document.getElementById('copyModal');
+            modal.style.opacity = 1;
+            modal.style.visibility = 'visible';
+        }, 3000);
+        
+        //close copy modal
+        document.getElementById('exitModal').addEventListener('click', function(){
+            let modal = document.getElementById('copyModal');
+            modal.style.opacity = 0;
+            modal.style.visibility = 'hidden';
+        });
+
+        //copy quotes when clicked
+        document.querySelectorAll('.quote-text').forEach(item => { //loop through the quotes
+            item.addEventListener('click', function(){ //triggered when a quote is clicked
+                var chil = item.children; //get the quote & quotee
+                var textContent = '"' + chil[0].innerHTML + '" - ' + chil[1].innerHTML; //form a sentence
+                textContent = textContent.replace(/\s+/g, ' ').trim(); //remove all the extra spaces
+                /*
+                    REGEX Explaination
+                    \s  : get all kinds of spaces
+                    +   : add additional conditions
+                    \g  : loop through the strings
+                */
+                var tobeCopied = this.appendChild(document.createElement('input')); //create input box (because the only way to copy a text is by using the value of an input box)
+                tobeCopied.value = textContent; //put the value of content into input box
+                tobeCopied.focus(); //select the value of input box
+                tobeCopied.select(); //same
+                tobeCopied.setSelectionRange(0, 99999); //same
+                document.execCommand('copy'); //copy the value of the input box
+                tobeCopied.parentNode.removeChild(tobeCopied); //remove the input box
+                alert('Copied!'); //notif
             });
         });
 

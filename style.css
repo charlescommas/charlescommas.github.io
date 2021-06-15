@@ -327,6 +327,7 @@ body{
     color: #888; 
     text-align: center;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .section-content .quote-text{
@@ -417,9 +418,58 @@ body{
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
 }
 
+.quote-modal-wrapper{
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+    transition: all 0.3s ease-in-out;
+}
+
+.quote-modal-box{
+    position: fixed;
+    height: auto;
+    width: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fee5bc;
+    color: #888;
+    border-radius: 20px;
+    padding: 2em 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+
+}
+
+.quote-modal-box button{
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 10px;
+    background-color: #fbc36a;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 3em;
+    font-weight: bold;
+}
+
+.quote-modal-box button:hover{
+    background-color: #fbba51;
+}
+
 @media only screen and (max-width: 768px){
     .content-quote-filter-inner{
         width: 90%;
+    }
+
+    .quote-modal-box{
+        width: 80vw;
     }
 }
 
