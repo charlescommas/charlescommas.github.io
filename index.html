@@ -106,7 +106,7 @@
             <img id="logo" src="assets/notfound.png">
         </div>
         <div class="error-title">
-            <p>This site <span id="oops">can't</span> be found</p>
+            <p>This site <span id="oops" style="cursor: pointer;">can't</span> be found</p>
         </div>
         <div class="error-content">
             <p>Check if there is a typo in URL</p>
@@ -187,14 +187,19 @@
         //change the 'cant' to 'can'
         document.getElementById('oops').addEventListener('click', function(){
             this.innerHTML = 'can';
+            let content = document.querySelector('.error-content');
+            let contChil = content.children;
+            contChil[0].innerHTML = 'The URL seems OK';
+            contChil[1].innerHTML = 'The spelling is correct';
+            contChil[2].innerHTML = 'HTTP_NO_ERROR'
             document.getElementById('logo').src = "assets/notfound_oops.png";
             document.getElementById('r').style.display = 'none';
-            var gobutton = document.getElementById('n');
+            let gobutton = document.getElementById('n');
             gobutton.innerHTML = "Let's Go !";
             gobutton.style.backgroundColor = 'lime';
             gobutton.style.color = 'white';
             gobutton.style.fontWeight = 'bold';
-        })
+        });
     });
 </script>
 <noscript>
