@@ -93,6 +93,14 @@
             <button id="exitModal">OK</button>
         </div>
     </div>
+
+    <!-- Copied Notification -->
+    <div class="notif-wrapper">
+        <div class="notif-box" id="copyNotif">
+            Quote copied. Let's motivate others!
+        </div>
+    </div>
+
 </body>
 <script type="text/javascript" src="quotes.js"></script>
 <script>
@@ -160,7 +168,15 @@
                 tobeCopied.setSelectionRange(0, 99999); //same
                 document.execCommand('copy'); //copy the value of the input box
                 tobeCopied.parentNode.removeChild(tobeCopied); //remove the input box
-                alert('Copied!'); //notif
+
+                //display copied notification
+                document.getElementById('copyNotif').style.bottom = '2em';
+                //hide copied notification after 3s
+                setTimeout(function(){
+                    let notifBox = document.getElementById('copyNotif');
+                    notifBox.style.bottom = '-5em';
+                }, 3000);
+
             });
         });
 
