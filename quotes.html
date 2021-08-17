@@ -140,7 +140,7 @@
             let modal = document.getElementById('copyModal');
             modal.style.opacity = 1;
             modal.style.visibility = 'visible';
-        }, 3000);
+        }, 8000);
         
         //close copy modal
         document.getElementById('exitModal').addEventListener('click', function(){
@@ -250,6 +250,37 @@
                 </div>
                 `;
                 document.getElementById('quoteWrapper').innerHTML = div;
+            });
+
+            //copy FILTERED quotes when clicked
+            document.querySelectorAll('.quote-text').forEach(item => { //loop through the quotes
+                item.addEventListener('click', function(){ //triggered when a quote is clicked
+                    var chil = item.children; //get the quote & quotee
+                    var textContent = '"' + chil[0].innerHTML + '" - ' + chil[1].innerHTML; //form a sentence
+                    textContent = textContent.replace(/\s+/g, ' ').trim(); //remove all the extra spaces
+                    /*
+                        REGEX Explaination
+                        \s  : get all kinds of spaces
+                        +   : add additional conditions
+                        \g  : loop through the strings
+                    */
+                    var tobeCopied = this.appendChild(document.createElement('input')); //create input box (because the only way to copy a text is by using the value of an input box)
+                    tobeCopied.value = textContent; //put the value of content into input box
+                    tobeCopied.focus(); //select the value of input box
+                    tobeCopied.select(); //same
+                    tobeCopied.setSelectionRange(0, 99999); //same
+                    document.execCommand('copy'); //copy the value of the input box
+                    tobeCopied.parentNode.removeChild(tobeCopied); //remove the input box
+
+                    //display copied notification
+                    document.getElementById('copyNotif').style.bottom = '2em';
+                    //hide copied notification after 3s
+                    setTimeout(function(){
+                        let notifBox = document.getElementById('copyNotif');
+                        notifBox.style.bottom = '-5em';
+                    }, 3000);
+
+                });
             });
         }
 

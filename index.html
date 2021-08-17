@@ -71,6 +71,10 @@
     .error-mid .hidden-button:hover{
         opacity: 1;
     }
+    #oops:hover{
+        background-color: #000;
+        color: #fff;
+    }
     @keyframes jump {
         0% {}
         15% {transform: scale(1, 0.75) translateY(20px);} /* prepare to jump */
@@ -99,7 +103,7 @@
 </style>
 <body>
     <div class="error-top">
-        <p>If you are sure that you are in the right place, you can hit that "I'm not lost!" button.</p>
+        <p>If only you can somehow change that "can't" into "can".</p>
     </div>
     <div class="error-mid">
         <div>
@@ -196,7 +200,7 @@
             document.getElementById('r').style.display = 'none';
             let gobutton = document.getElementById('n');
             gobutton.innerHTML = "Let's Go !";
-            gobutton.style.backgroundColor = 'lime';
+            gobutton.style.backgroundColor = '#33cc33';
             gobutton.style.color = 'white';
             gobutton.style.fontWeight = 'bold';
         });
